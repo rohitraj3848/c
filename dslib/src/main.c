@@ -14,14 +14,13 @@ int main()
 	addEdge(graph, 3, 4);
 
 	printGraph(graph);
-
    ListNode* head = NULL;
-	insertFirst(10, head);
-   insertFirst(20, head);
-   insertFirst(30, head);
-   insertFirst(1, head);
-   insertFirst(540, head);
-   insertFirst(56, head); 
+	insertFirst(10, &head);
+   insertFirst(20, &head);
+   insertFirst(30, &head);
+   insertFirst(4, &head);
+   insertFirst(540, &head);
+   insertFirst(56, &head); 
 
    printf("Original List: "); 
 	
@@ -29,19 +28,19 @@ int main()
    printList(head);
 
    while(!isEmpty(head)) {            
-      ListNode *temp = deleteFirst(head);
+      ListNode *temp = deleteFirst(&head);
       printf("\nDeleted value:");
       printf("(%d) ",temp->data);
    }  
 	
    printf("\nList after deleting all items: ");
    printList(head);
-   insertFirst(10, head);
-   insertFirst(20, head);
-   insertFirst(30, head);
-   insertFirst(1, head);
-   insertFirst(540, head);
-   insertFirst(56, head); 
+   insertFirst(10, &head);
+   insertFirst(20, &head);
+   insertFirst(30, &head);
+   insertFirst(4, &head);
+   insertFirst(540, &head);
+   insertFirst(56, &head); 
    
    printf("\nRestored List: ");
    printList(head);
@@ -57,7 +56,7 @@ int main()
       printf("Element not found.");
    }
 
-   delete(4, head);
+   delete(4, &head);
    printf("List after deleting an item: ");
    printList(head);
    printf("\n");

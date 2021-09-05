@@ -1,7 +1,6 @@
 #include <linkedlist.h>
 
 
-
 void printList(ListNode* head) {
    ListNode *ptr = head;
    printf("\n[ ");
@@ -10,17 +9,17 @@ void printList(ListNode* head) {
       printf("%d ->",ptr->data);
       ptr = ptr->next;
    }
-	
+	printf("%s","NULL");
    printf(" ]");
 }
 
 
-void insertFirst(int data, ListNode* head) {
+void insertFirst(int data, ListNode** head) {
    ListNode *link = (ListNode*) malloc(sizeof(ListNode));
 	
    link->data = data;
-   link->next = head;
-   head = link;
+   link->next = *head;
+   *head = link;
 }
 
 void insertlast(int data, ListNode* head) {
@@ -41,12 +40,23 @@ void insertlast(int data, ListNode* head) {
    }
 }
 
-ListNode* deleteFirst(ListNode* head) {
+ListNode* deleteFirst(ListNode** head) {
 
-   ListNode *tempLink = head;
-   head = head->next;
-   return tempLink;
+   if(*head == NULL) return NULL;
+
+   ListNode *tempLink = *head;
+   if(tempLink->next == NULL)
+   {
+      *head = NULL;
+      return tempLink;
+   }
+   else
+   {
+      *head = tempLink->next;
+      return tempLink;
+   }
 }
+   
 
 ListNode* deletelast(ListNode* head) {
 
@@ -98,9 +108,9 @@ ListNode* find(int data, ListNode* head) {
    return current;
 }
 
-ListNode* delete(int data, ListNode* head) {
+ListNode* delete(int data, ListNode** head) {
 
-   ListNode* current = head;
+   ListNode* current = *head;
    ListNode* previous = NULL;
 	
    if(head == NULL) {
@@ -116,12 +126,13 @@ ListNode* delete(int data, ListNode* head) {
          current = current->next;
       }
    }
-   if(current == head) {
-      head = head->next;
+   if(current == *head) {
+      current = current->next;
    } else {
       previous->next = current->next;
    }    
 	
+   *head = current;
    return current;
 }
 

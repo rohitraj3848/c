@@ -1,6 +1,5 @@
 #include <graph.h>
 
-
 struct AdjListNode* newAdjListNode(int dest)
 {
 	struct AdjListNode* newNode = (struct AdjListNode*) malloc(sizeof(struct AdjListNode));
