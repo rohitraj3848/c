@@ -52,7 +52,7 @@ int server_add_header_status(nghttp2_nv **nv, int *num_nv, int count_nv, char *h
 	resp_nv[count_nv].flags = 0;
 
 	*nv = resp_nv;
-	*num_nv = count_nv;
+	*num_nv = count_nv + 1;
 	return SUCCESS;
 }
 
